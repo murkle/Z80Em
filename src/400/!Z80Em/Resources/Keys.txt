@@ -1,0 +1,41 @@
+# Spectrum Key  RISC OS Keys (up to 4 for each Spectrum key)
+CapsShift	LShift 	Tab	Delete	<-|
+Z		Z
+X		X
+C		C
+V		V
+B		B
+N		N       K1
+M		M       K2
+SymbolShift	,	LAlt	Tab	K3
+Space		.	Space   K.	Enter
+A		A
+S		S
+D		D
+F		F
+G		G
+H		H	K4
+J		J       K5
+K		K	K6
+L		L	K+
+Enter		;	Return
+Q		Q
+W		W
+E		E
+R		R
+T		T
+Y		Y	K7
+U		U       K8
+I		I       K9
+O		O	K-
+P		P
+1		1
+2		2
+3		3
+4		4
+5		5	Left
+6		6	Down
+7		7	Up	NumLock
+8		8	Right	K/
+9		9	K*
+0		0	K0	Delete	<-|	RCtrl
