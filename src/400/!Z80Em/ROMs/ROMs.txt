@@ -1,0 +1,17 @@
+Z80Em: ROMs
+===========
+
+The following ROMs are supported:
+
+48k                 The original ZX Spectrum 48k ROM
+
+128k                The ZX Spectrum 128k ROM
++2                  The ZX Spectrum +2 ROM
++2Fr                The French ZX Spectrum +2 ROM
+
+IMCEOR              Ian Collier's ROM (differences from standard ROM)
+GrootEOR            Henk de Groot's ROM (differences from standard ROM)
+HTREOR              roehrig@ergo-edv.de (differences from standard ROM)
+TK95                TK 95 ROM (not supplied)
+
+They should be placed in the directory '!Z80Em.ROMs'
