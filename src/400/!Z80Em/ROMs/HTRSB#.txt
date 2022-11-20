@@ -1,0 +1,47 @@
+Hi folks,
+
+great to see that there are still specky fans out there.
+
+When i had a spectrum i wrote an enhanced operating system for the spectrum
+hardware.
+
+This "new" rom is compatible to the old one but has the following
+enhancements:
+
+1) the hardware-reset generates "L-BREAK into program" message even when
+executing
+    machine code. For original reset press the space-key while resetting.
+2) the hardware-nmi saves screen$ on tape or prints it depending on the
+following keypress
+
+3) The current basic line got a flashing ">"-sign.
+4) You can use the cursor-up-and-down keys when editing a basic line
+5) when selecting a basic line in the listing with cursor-up-down the
+cursor-right key starts
+   the edit task.
+
+The following new tokens or commands have been implemented
+ss=Symbol Shift
+
+ss-1:	EDIT [linenumber]		edit a special line
+ss-2:	L-Cursor			Tokens can be typed letterwise. Perfect for emulators!!!
+ss-3:	DELETE [startline][,endline]	delete basiclines
+ss-4:	DELREM [startline][,endline]	delete REM-lines
+ss-5:	MEMORY			displays free memory below RAMTOP
+ss-6:	FIND linenumber		displays memory-adress of basic line
+ss-7:	ERASE "m";1;                           Automatic Input
+ss-9:	CAT 1 <ENTER>		Automatic Input
+ss-0:	FORMAT "m";1;"L-Cursor" 	Automatic Input
+ss-j:	LOAD *"m";1;"L-Cursor"		Automatic Input
+ss-s:	SAVE *"m";1;			Automatic Input
+ss-t:	MERGE *"m";1;"L-Cursor"	Automatic Input
+ss-r:	VERIFY *"m";1;			Automatic Input
+ss-m:	LOAD *"m";1;"run" <ENTER> 	Automatic Input
+
+If you like to have a copy of the rom please contact me:
+
+My email is:	roehrig@ergo-edv.de
+
+Have fun.
+
+Thomas
