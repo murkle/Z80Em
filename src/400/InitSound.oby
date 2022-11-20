@@ -1,0 +1,7 @@
+RMReInit SoundDMA
+RMReInit SoundChannels
+RMReInit WaveSynth
+RMReInit StringLib
+RMReInit Percussion
+X RMReInit Z80Support
+X RMReInit AYSound

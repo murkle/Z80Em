@@ -1,0 +1,4 @@
+ integer machine%
+ real Z80mem
+ real Pc
+ real mem128
