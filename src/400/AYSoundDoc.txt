@@ -1,0 +1,109 @@
+AYSound_Init
+	R0 = 0 for voices, <>0 for use with Z80Support's sound code
+	Initialises AYSound for use.
+	Only call with R0<>0 if Z80_SoundInit has just been called.
+
+AYSound_Stop
+	Shuts down AYSound and restores the previous sound configuration.
+	If using Z80Support, this must be called before Z80_SoundKill, and
+	you must SOUND x,0,0,0 on all channels.
+
+AYSound_Read
+	Reads the AY registers into the 16-byte block pointed to by R0.
+
+AYSound_Write
+	R0 = register, R1 = contents, R2 = clock cycles to next	interrupt
+	- writes to the given register, taking effect at the specified time
+	*OR*
+	R0 -> register block
+	- writes to all the AY registers. R2 is assumed to be 0 for timing
+	purposes.
+
+AYSound_FastRW
+	Returns R0 = read, R1 = write USR, R2 = write SVC
+	Call these addresses directly as for the above read/write SWIs.
+
+AYSound_Volume
+	R0 = 0..127, or -1
+	Sets the volume level to R0 (if 0..127).
+	Returns the previous setting in R0.
+
+AYSound_Speed
+	R0 = value based on clock speed, or 0 to read
+	R1 = Z80 clock cycles per 1/50s, or 0 to read
+	This sets the AY emulation and playback speeds. R0 is a magic number
+	which is related to 1.7734MHz and the sample rate; R1 is the value
+	used by the emulator back end for speed control purposes.
+	The previous settings are always returned.
+
+AYSound_Register
+	Registers a user of AYSound. (Actually increments a usage count.)
+
+AYSound_Deregister
+	Deregisters a user of AYSound. (Actually decrements a usage count.)
+
+AYSound_Stereo
+	R0 = &xy, or -ve
+	If +ve, sets the stereo spacing according to x (0..3 corresponding
+	to wide, narrow, medium, wide) and the positions:
+		0	all centre
+		1	ACB (eg. A to left, C at centre, B to right)
+		2	ABC
+		3	BAC
+		4	BCA
+		5	CAB
+		6	CBA
+	The previous setting is returned in R0.
+
+AYSound_Log
+	R0 = -1		Read file handle of log file
+	R0 = 0		Close log file, if open
+	R0 -> filename	Open and initialise the named log file
+
+AYSound_Ticker
+	Must be called on every Spectrum interrupt. This ensures that the
+	sound data buffer is properly filled, and performs logging
+	operations.
+
+AYSound_Emulation
+	R0 = -1..1
+	If 0 or 1, then sets the emulation mode to "full" (0) or "fast" (1).
+	The previous setting is returned in R0.
+	The AY's pseudo-sample mode (and the clicking of disabled channels
+	when their volume levels are changed) is only emulated in "full"
+	mode; there will be /some/ sample degradation. The interaction of
+	tone and noise when both are enabled for the same channel is not
+	emulated.
+	AYSound defaults to "full" mode on machines with at least ARM3.
+
+	Note that sample degradation can be reduced by increasing the
+	sampling frequency; this should be done by multiplying the size of
+	the DMA buffer by x, and dividing the sampling period by the same x.
+	(The ideal sampling frequency is 110837.5Hz (AY clock/16), but this
+	is obviously a little impractical.)
+
+	There is currently no support for this, since Z80Support and the
+	emulator back end would also need to know about this.
+
+AYSound_Load
+	R0 -> filename
+	Loads the named AY log file. On Risc PCs, this is loaded into a
+	dynamic area; on older Arcs, it's loaded into the RMA.
+	(Calls AYSound_Init with R0=0.)
+
+AYSound_Play
+	R0 = 0		Stop playing and reset position to start
+	R0 = 1		Start playing from current position
+	R0 = 2		Pause playback, preserving current position
+	R0 = 3		Stop playing and remove tune from memory
+	R0 = -1		Read current status (returns R0 = 0..3)
+	(Z80Em should check that the status is not 1.)
+
+AYSound_Repeat
+	R0 = -1..1
+	If 0 or 1, then the repeat status is set to off or on, respectively.
+	The previous setting is returned in R0.
+
+AYSound_Pollword
+	This is reserved for use by AYPlay. (AYSound sets the pollword to
+	certain operation-dependent values upon their completion.)
