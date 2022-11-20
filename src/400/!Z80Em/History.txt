@@ -1,0 +1,151 @@
+Z80Em: History
+==============
+
+1.00 (27th October 1995)
+
+First public release at Acorn World '95
+
+1.10 (14th January 1996)
+
+Low resolution sprites added
+Screen code speeded up, Mode 27 now centred (RJW)
+Bug in generating NMIs fixed (Darren Salt)
+Official SWI Chunk allocated (&4C4C0)
+Official TAP filetype obtained (&11D)
+Default volume now maximum
+Snapshots now grabbed properly if they are the !Run file
+of an Application (should now be RISC OS 2 friendly)
+Snapshot loading updated for TAPs
+
+1.20 (11th May 1996)
+
+zxs2tape and zxs3tap added to Utils
+tape2TAP now sets the filetype to &11D (TAP)
+Switching Tape mode on or off no longer minimises or resets the emulator
+f5 now toggles tape mode (ie starts and stops tape)
+bug fix (loading TAPs when minimised)
+bug fixed in Kempston joystick handling
+bug fixed (R register in CB opcodes) (Darren Salt)
+128k Memory added
+128k Screen handling added
+128k Sound added (Darren Salt)
+Now handles Z80 v3 files ('Z80format' updated) (Darren Salt)
+Error handling tidied (Darren Salt, MRB)
+Wimpslot adjusts according to 48k/128k
+New Sprites added (RGH)
+Icon bar sprite now shows machine and memory (or ROM)
+Extra 32k added to wimpslot
+Opcodes OUTI, OUTD, OTIR, OTDR added (Darren Salt, MRB)
+Opcodes LDDR and LDIR tweaked
+Support for SLT format added (including Utils) (Darren Salt)
+Machine menu and support for other ROMs added
+
+1.30 (13th October 1996)
+
+Bug fixed in SLT code
+Bug fixed in (de)compression of Z80s
+Does MODE "x256y196c16" on Risc PC if MODE 60 not available
+Bug fix: RISC OS 2 BASIC seems to need a space after SWI (?!?)
+Bug fix: Wimp_ReadSysInfo 1
+Redundant VSync code removed
+Edge of screen black in MODE 27 (but not 9)
+Bug fixed in Joystick code (now uses Joystick 0)
+128k memory access completely recoded
+Bug fixed in port 7FFD handling (R13 corrupted)
+Bug fixed in CIRCLE (ADC HL,DE)
+Bug fixed in SLL
+Added shift-f4 to load next snapshot
+Better error handling when loading snapshots
+Bugs fixed in SRA,SRL,SLA
+Bug fixed in ADD HL,HL ADD IX,IX ADD IY,IY ADD A,A RL
+IMC and Groot ROMs now supplied as EOR'd images
+Tape Code merged with main Code
+Bug fixed in AYSound on Risc PC
+
+2.00 (1st November 1996)
+
+Support for screens in SLTs
+Support for +2 ROMs
+128k ROMs merged into one file
+Configure window added, options menu removed
+Speed now measured in percentage
+ACB Stereo added [awaiting support in module]
+Keymap option added
+Poke option removed (superseded by !ZXiface)
+bug fixed in ADC A,A and ADC r,r
+Border option added for modes 9 and 27
+Bug fixed in dragbox routine
+Bug fixed in SBC
+
+2.10 (24th November 1996)
+
+Another bug fixed in ADC HL,r
+Adjust on icon bar -> Config Window
+Support added for +2, Groot and IMC Sprites
+
+3.00 (20th March 1999)
+
+Bug fixed: TAP loading in 48k mode
+Bug fixed: Icon bar sprite vanishing
+AYSound changes (Darren Salt)
+Minimise option REMOVED
+Bug(?) fixed: Volume saved in Options file
+Bug fixed: Flashing took a few seconds to start
+Desktop Option to save screen as sprite
+Screen displayed in desktop on return (window only opened from mode 60)
+Frame rate option added
+Device claim protocol used to claim sound subsystem
+Multitasking option added!!!
+Bug fixed in SLL instructions (DS)
+Bug fixed: mode reselection won't occur when error occurs in desktop (DS)
+RO2 support dumped (DS)
+Tape-related bits: (DS)
+  Code rewritten: is now easier to implement other formats
+  Alt-F5 pauses the tape, Shift-F5 rewinds it (also via menu)
+  Status display (via mouse pointer, single tasking mode)
+  'Tape' option now a menu:
+    Enabled/paused/eject for tape files
+    Rewind for tape and TAP files
+  Tape status window (Shift-Adjust on iconbar icon, or Tape�Status)
+  For that authentic loading experience:
+    TAP-as-tape option (� in the tape status window)
+    Listen to the tape
+  TZX (1.12) support (filetype &1B9)
+  VOC support
+Mode 48 added (will require GameModes module for Arc; OK on RPC) (DS)
+Mode 27 code rewritten (DS)
+Save TAP feature added
+Save tape eject added (Alt-F3) (DS)
+Double-click on multitasking window enters singletasking mode (DS)
+Sound code substantially rewritten (let's see Maestro interfere *now*!) (DS)
+Simple interaction with Z80Diss and ZXiface (DS)
+Multitasking option separated from mode menu
+Flags code totally rewritten: Parity flag and "undocumented flags" 3 & 5 now work
+
+4.00
+
+32/26 bit neutral version except for 128k sound (iyonix can use MODE 28 or 512x384 mode)
+Sprites given correct names (!Sprites, !Sprites23) (JGH)
+code for OUT (&FD),A fixed (JGH)
+Reset behaviour fixed (JGH)
+Updated DOSMaps in !Boot to work on all DOSFS versions
+Removed support for old "2D" templates
+New RISC OS 5 Sprites (RGH)
+New multitasking screen sizes (RGH):
+  RISC OS 3.1 & 3.5: small sprite
+  RISC OS 3.6-4.99 : small or large window (use resize icon to toggle)
+  RISC OS 5        : large or extra large window (use resize icon to toggle)
+Allow 48K AY default is now off
+Bugfix: click on iconbar icon when iconised
+Index number appended to saved snapshots (F3)
+Bug fixed: ADC HL,xx (opcode wrong length, Z flag) & flags 3,5 added for good measure
+Bug fixed: SRA,SRL (S flag, flags 3,5 added too, still need to do parity)
+Added checking for ":" to FNLeaf
+Removed code that checks !Run file (type BA0 or BA1) when applications clicked on
+Bug fixed: (ADC again!)
+Bug fixed: DDCD & FDCD table entries for &26 SLA (IX/Y+d) wrong
+Bug fixed: SLA (IX/Y+d) not clearing carry flag
+HALT instruction altered to make Repton & Repton 2 work
+Bug fixed: SBC HL,HL (generic code SBC HL,rr not working if rr=HL)
+Bug fixed: ADD IY,IY (missing FNfetch)
+Official filetypes added for TZX (&1b9) and VOC (&1b8)
