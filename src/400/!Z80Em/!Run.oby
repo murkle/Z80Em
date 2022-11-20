@@ -1,0 +1,29 @@
+Set Z80Em$Dir <Obey$Dir>
+Set Z80Em$Res <Obey$Dir>.Resources
+Set Z80Em$Sprites !Sprites
+If "<Boot$OSVersion>">499 Then Set Z80Em$Sprites 5Sprites
+IconSprites <Z80Em$Res>.<Z80Em$Sprites>
+Set File$Type_BA1 SNA
+Set File$Type_BA0 Z80
+Set File$Type_11D TAP
+Set File$Type_1B9 TZX
+Set File$Type_1B8 VOC
+Set Alias$@RunType_BA1 Run <Z80Em$Dir>.!Run %%*0
+Set Alias$@RunType_BA0 Run <Z80Em$Dir>.!Run %%*0
+Set Alias$@RunType_11D Run <Z80Em$Dir>.!Run %%*0
+Set Alias$@RunType_1B8 Run <Z80Em$Dir>.!Run %%*0
+Set Z80Em$DefaultRAW <Z80Em$Dir>.^.tape-in
+| TAP to load from
+Set Z80Em$DefaultTAP <Z80Em$Dir>.DefaultTAP
+| TAP to save to
+Set Z80Em$TAP <Z80Em$Dir>.DefaultTAP
+Set Z80Em$SaveScreen <Z80Em$Dir>.^.!Z80Screen
+Set Z80Em$SaveSnap <Z80Em$Dir>.^.!Snap
+WimpSlot -max 384k -min 384k
+WimpSlot -max 96k -min 96k
+RMEnsure Z80Support 0.26 RMLoad <Z80Em$Res>.Z80Support
+RMEnsure Z80Support 0.26 Error Z80Support module too old
+If "<Boot$OSVersion>"<500 Then RMEnsure SpectrumMode 0 RMLoad <Z80Em$Res>.Mode60
+RMEnsure AYsound 0.15 RMLoad <Z80Em$Res>.AYsound
+RMEnsure AYsound 0.15 Error AYSound module too old
+<Z80Em$Dir>.!RunImage %*0

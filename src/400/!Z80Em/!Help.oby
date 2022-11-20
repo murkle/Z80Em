@@ -1,0 +1,7 @@
+<Obey$Dir>.!Boot
+Set Z80Em$StrongHelpLoaded 1
+RMEnsure StrongHelp 0 Set Z80Em$StrongHelpLoaded 0
+If <Z80Em$StrongHelpLoaded> Then StrongHelp <Z80Em$Dir>.Z80Em !Root
+Unset Z80Em$StrongHelpLoaded
+RMEnsure StrongHelp 2.10 If "<StrongHelp$Dir>"="" Then Error The Z80Em documentation requires StrongHelp
+RMEnsure StrongHelp 2.10 Run <StrongHelp$Dir> <Z80Em$Dir>.Z80Em

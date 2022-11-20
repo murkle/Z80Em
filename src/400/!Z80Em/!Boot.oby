@@ -1,0 +1,37 @@
+Set Z80Em$Dir <Obey$Dir>
+Set Z80Em$Res <Obey$Dir>.Resources
+Set Z80Em$Sprites !Sprites
+If "<Boot$OSVersion>">499 Then Set Z80Em$Sprites 5Sprites
+IconSprites <Z80Em$Res>.<Z80Em$Sprites>
+| all registered filetypes
+Set File$Type_BA1 SNA
+Set File$Type_BA0 Z80
+Set File$Type_11D TAP
+Set File$Type_1B9 TZX
+Set File$Type_1B8 VOC
+
+Unset Z80Em$Temp
+Set Alias$SetB If "|<%%0>"="" Then Set %%*0
+
+SetB Alias$@RunType_BA1 Run <Z80Em$Dir>.!Run %%*0
+SetB Alias$@RunType_BA0 Run <Z80Em$Dir>.!Run %%*0
+SetB Alias$@RunType_11D Run <Z80Em$Dir>.!Run %%*0
+SetB Alias$@RunType_1B8 Run <Z80Em$Dir>.!Run %%*0
+
+SetB Z80Em$DefaultRAW <Z80Em$Dir>.^.tape-in
+SetB Z80Em$DefaultTAP <Z80Em$Dir>.DefaultTAP
+SetB Z80Em$SaveScreen <Z80Em$Dir>.^.!Z80Screen
+SetB Z80Em$SaveSnap <Z80Em$Dir>.^.!Z80Snap
+
+
+Unset Alias$SetB
+
+RMEnsure DOSFS 0.00 Obey
+DOSMap SNA SNA
+DOSMap TAP TAP
+DOSMap VOC VOC
+DOSMAP TZX TZX
+RMEnsure DOSFS 0.44 Obey
+| DOSFS 0.43 doesn't like numbers
+DOSMap Z80 Z80
+DOSMap SLT Z80
